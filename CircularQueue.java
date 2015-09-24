@@ -3,16 +3,15 @@ import java.util.Scanner;
 
         
 public class CircularQueue {
-    private int head,tail;    
-    private String name;
-    private static final int size = 5;
-    private String [ ] q = new String [size];
-    Scanner input = new Scanner (System.in);
+    private int head,tail;
     public CircularQueue(){
         head=-1;
         tail=-1;
     }
-
+    private String name;
+    private static final int size = 5;
+    private String [ ] q = new String [size];
+    Scanner input = new Scanner (System.in);
         
     public void insertQueue(){
         name=getName();
@@ -31,60 +30,58 @@ public class CircularQueue {
         
     public void deleteQueue ( ) {
         String X;
-	      if(isQueueFull()) {
-		       System.out.println("Overflow");
+	if(isQueueFull()) {
+		System.out.println("Overflow");
         }
-	      else { 
-		      X = q[head];
-		      System.out.println ("servicing" +" " + X);
-		      if (head == tail) {//just emptied q
-		        head = -1; //rest head,tail
-		        tail = -1;
+	else{ 
+		X = q[head];
+		System.out.println ("servicing" +" " + X);
+		if (head == tail) {//just emptied q
+		    head = -1; //rest head,tail
+		    tail = -1;
         	}
-		      else { //rest of delete q
-		        head ++;
-		        if (head == size) {//wrap
-			      head = 0;
-            }
-		      } //end else
-	      } //end other else
+		else { //rest of delete q
+		       head ++;
+		       if (head == size) //wrap
+			   head = 0;
+		     } //end else
+	    } //end other else
     } //end of delete queue
     
     public void PrintQueueLogical( ) {
         int next;
-	      if (isQueueEmpty()) {
-	       System.out.println("Empty");
+	if (isQueueEmpty()) {
+	    System.out.println("Empty");
         }
-	      else{
+	else{
 	       	next = head;
 	       	System.out.println("q[" + next +"]" + q[next]);
 	       	while (next != tail) {
-                 next ++;
-          }
-          if (next==size) {
-              next = 0;
-          }
-        System.out.println ("q[" + next +"]" + q[next]);
-	      } //end else
+                       next ++;}
+                if (next==size) {
+                           next = 0;
+                       }
+                       System.out.println ("q[" + next +"]" + q[next]);
+	    } //end else
     } //end Print QueueLogical
     
     public void PrintQueuePhysical(){
-	      for ( int J = 0;J < size; J++)
+	for ( int J = 0;J < size; J++)
 	      System.out.println ("q[" + J + "] = " + q[J]);
     } //end Print QueuePhysical
     
     private String getName(){
-	      System.out.println ("enter name:");
-	      return input.nextLine();
+	System.out.println ("enter name:");
+	return input.nextLine();
     } //get name
     
     public boolean isQueueEmpty(){
-	      return ( head == -1);
+	return ( head == -1);
     }
     
     public boolean isQueueFull(){
-	      return ((tail - head + 1 == 0 ) || (tail - head + 1 == size));
-	  } //end is                                                                                                                                                                                                    QueueFull
+	return ((tail - head + 1 == 0 ) || (tail - head + 1 == size));
+	} //end is                                                                                                                                                                                                    QueueFull
 } //end CircularQueue
 
 
